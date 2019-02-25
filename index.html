@@ -1,0 +1,24 @@
+<doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link rel="stylesheet" href="styles/main.css">
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="left-container">
+               <button onclick="createRandomCanvas()">Generate Random Canvases</button>
+               <div>
+                   <select name="" id="canvasSelect"></select>
+               </div>
+               <button id="generateBtn" disabled onclick="generateShapes()">Insert to canvas</button>
+            </div>
+            <div class="right-container" id="canvasContainer">
+				<canvas id="c">
+            </div>
+        </div>
+        <script src="js/lib/fabric.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
