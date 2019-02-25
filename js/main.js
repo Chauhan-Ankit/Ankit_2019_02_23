@@ -11,6 +11,7 @@ function init(){
     .then((resp) => resp.json()) //Transform the data into json
     .then(function(data) {
         jsonData = Object.values(data);
+        document.querySelector("#randomCan").disabled = false;
     });
 }
 
@@ -26,8 +27,11 @@ function createRandomCanvas(){
         canvas.setAttribute("id", "canvas-"+i);
         canvasContainer.appendChild(canvas);
         canvas = new fabric.Canvas("canvas-"+i);
+        //canvas.setHeight(400);
+       // canvas.setWidth(400);
         canvasArray.push(canvas);
     }
+
     addCanvasId(randomN);
     document.querySelector("#generateBtn").disabled = false;
 }
@@ -44,7 +48,7 @@ function generateShapes(){
     let selectedId = getRandomObj.id;
 
     document.querySelector("#generateBtn").disabled = true;
-    console.log(getRandomObj)
+    
     if(getRandomObj.albumId >= 100){
         let title = getRandomObj.title;
         shape = new fabric.Text(title, globalVal.text);
@@ -58,7 +62,7 @@ function generateShapes(){
     else if(Math.abs(selectedId % 2) == 1){
         let imgObj = new Image();
         imgObj.src = getRandomObj.thumbnailUrl;
-        console.log("URL :: ", getRandomObj.thumbnailUrl)
+       // console.log("URL :: ", getRandomObj.thumbnailUrl)
         imgObj.onload = function () 
         {
            console.log("Loaded....")
@@ -66,41 +70,14 @@ function generateShapes(){
            shape.setCoords();
            updateCanvas(can, shape)
         }
-    }
-
-   
+    }  
 }
    
 function updateCanvas(can, shape){
-    //let grp = can.item(0);
-    //grp.addWithUpdate(shape);
     can.add(shape);
-   // can.setCoords();
     can.renderAll();
     document.querySelector("#generateBtn").disabled = false;
 }
-/*
-    if(can.getObjects().length > 7){
-        window.alert("Maximun number of shapes in Canvas can be 8;");
-        return false;
-    }
-	
-	var left = can.getObjects().length * 65 +20;
-    var top = 20;
-
-    if(can.getObjects().length > 3){
-        top = can.getHeight()/2 + 10;
-        left = (can.getObjects().length - 4) *65 +20;
-    }
-
-
-    let grp = can.item(0);
-    console.log(grp);
-    console.log(grp.calcCoords())
-    grp.addWithUpdate(shape);
-    can.renderAll();
-    */
-
 
 function addCanvasId(_rnd){
    let canvasSelect = document.querySelector("#canvasSelect");
