@@ -60,6 +60,17 @@ button:disabled{
     cursor: default;
 }
 
+#dragimage
+{
+    opacity:0.5;
+    max-width:100px;
+    max-height:200px;
+    position:fixed;
+    top:0px;
+    left:0px;
+    z-index:90000;
+}
+
 @media (max-width: 980px) {
     .main-container {
         max-width: 980px;
